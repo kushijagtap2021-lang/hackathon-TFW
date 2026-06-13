@@ -48,7 +48,7 @@ const crops = [
         space: ["room"],
         light: ["lots"],
         level: ["pro"],
-        image: "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg",
+        image: "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpg",
         reason: "Produces abundant harvests indoors."
     },
     {
