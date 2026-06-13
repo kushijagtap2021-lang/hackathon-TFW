@@ -1,75 +1,77 @@
-const crops =
-    [
-        {
-            name: "Lettuce",
-            space: ["windowsill", "balcony"],
-            light: ["medium", "lots"],
-            level: ["beginner", "pro"],
-            image: "https://images.unsplash.com/photo-1622205313162-be1d5712a43f?auto=format&fit=crop&w=1200&q=80",
-            reason: "Fast-growing and perfect for hydroponic beginners."
-        },
-        {
-            name: "Spinach",
-            space: ["windowsill", "balcony"],
-            light: ["low", "medium"],
-            level: ["beginner", "pro"],
-            image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=1200&q=80",
-            reason: "Thrives even with moderate lighting."
-        },
-        {
-            name: "Basil",
-            space: ["windowsill", "balcony"],
-            light: ["lots"],
-            level: ["beginner", "pro"],
-            image: "https://images.unsplash.com/photo-1618375569909-3c8616cf7733?auto=format&fit=crop&w=1200&q=80",
-            reason: "Aromatic herb that loves sunlight."
-        },
-        {
-            name: "Mint",
-            space: ["windowsill", "balcony"],
-            light: ["low", "medium"],
-            level: ["beginner", "pro"],
-            image: "https://images.unsplash.com/photo-1628557044797-f21a177c37ec?auto=format&fit=crop&w=1200&q=80",
-            reason: "Extremely easy and productive hydroponic crop."
-        },
-        {
-            name: "Strawberries",
-            space: ["balcony", "room"],
-            light: ["lots"],
-            level: ["pro"],
-            image: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=1200&q=80",
-            reason: "High-value fruit crop for experienced growers."
-        },
-        {
-            name: "Cherry Tomatoes",
-            space: ["room"],
-            light: ["lots"],
-            level: ["pro"],
-            image: "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg",
-            reason: "Produces abundant harvests indoors."
-        },
+/* ===================================
+   CROP DATABASE
+=================================== */
 
-        {
-            name: "Kale",
-            space: ["balcony", "room"],
-            light: ["medium", "lots"],
-            level: ["beginner", "pro"],
-            image: "https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg",
-            reason: "Nutrient-rich and hydroponic-friendly."
-        },
-        {
-            name: "Cilantro",
-            space: ["windowsill", "balcony"],
-            light: ["medium"],
-            level: ["beginner"],
-            image: "https://images.unsplash.com/photo-1625944525533-473f1b3d54e7?auto=format&fit=crop&w=1200&q=80",
-            reason: "Compact herb ideal for small setups."
-        }
-    ];
+const crops = [
+    {
+        name: "Lettuce",
+        space: ["windowsill", "balcony"],
+        light: ["medium", "lots"],
+        level: ["beginner", "pro"],
+        image: "https://images.unsplash.com/photo-1622205313162-be1d5712a43f?auto=format&fit=crop&w=1200&q=80",
+        reason: "Fast-growing and perfect for hydroponic beginners."
+    },
+    {
+        name: "Spinach",
+        space: ["windowsill", "balcony"],
+        light: ["low", "medium"],
+        level: ["beginner", "pro"],
+        image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=1200&q=80",
+        reason: "Thrives even with moderate lighting."
+    },
+    {
+        name: "Basil",
+        space: ["windowsill", "balcony"],
+        light: ["lots"],
+        level: ["beginner", "pro"],
+        image: "https://images.unsplash.com/photo-1618375569909-3c8616cf7733?auto=format&fit=crop&w=1200&q=80",
+        reason: "Aromatic herb that loves sunlight."
+    },
+    {
+        name: "Mint",
+        space: ["windowsill", "balcony"],
+        light: ["low", "medium"],
+        level: ["beginner", "pro"],
+        image: "https://images.unsplash.com/photo-1628557044797-f21a177c37ec?auto=format&fit=crop&w=1200&q=80",
+        reason: "Extremely easy and productive hydroponic crop."
+    },
+    {
+        name: "Strawberries",
+        space: ["balcony", "room"],
+        light: ["lots"],
+        level: ["pro"],
+        image: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=1200&q=80",
+        reason: "High-value fruit crop for experienced growers."
+    },
+    {
+        name: "Cherry Tomatoes",
+        space: ["room"],
+        light: ["lots"],
+        level: ["pro"],
+        image: "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg",
+        reason: "Produces abundant harvests indoors."
+    },
+    {
+        name: "Kale",
+        space: ["balcony", "room"],
+        light: ["medium", "lots"],
+        level: ["beginner", "pro"],
+        image: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Kale-Bundle.jpg",
+        reason: "Nutrient-rich and hydroponic-friendly."
+    },
+    {
+        name: "Cilantro",
+        space: ["windowsill", "balcony"],
+        light: ["medium"],
+        level: ["beginner"],
+        image: "https://images.unsplash.com/photo-1625944525533-473f1b3d54e7?auto=format&fit=crop&w=1200&q=80",
+        reason: "Compact herb ideal for small setups."
+    }
+];
 
-/* -------------------------
+/* ===================================
    QUESTIONS
-------------------------- */
+=================================== */
 
 const questions = [
     {
@@ -77,19 +79,16 @@ const questions = [
         key: "space",
         options: ["windowsill", "balcony", "room"]
     },
-
     {
         question: "☀️ How much light do you get?",
         key: "light",
         options: ["low", "medium", "lots"]
     },
-
     {
         question: "🌱 What's your experience level?",
         key: "level",
         options: ["beginner", "pro"]
     },
-
     {
         question: "💧 How often can you care for plants?",
         key: "care",
@@ -97,13 +96,17 @@ const questions = [
     }
 ];
 
+/* ===================================
+   VARIABLES
+=================================== */
+
 let currentQuestion = 0;
 let answers = {};
 let ecoScore = 0;
 
-/* -------------------------
+/* ===================================
    START QUIZ
-------------------------- */
+=================================== */
 
 function startQuiz() {
 
@@ -112,12 +115,11 @@ function startQuiz() {
     document.getElementById("quiz").style.display = "block";
 
     showQuestion();
-
 }
 
-/* -------------------------
+/* ===================================
    SHOW QUESTION
-------------------------- */
+=================================== */
 
 function showQuestion() {
 
@@ -126,44 +128,37 @@ function showQuestion() {
     document.getElementById("question").textContent =
         q.question;
 
-    const options =
+    const optionsContainer =
         document.getElementById("options");
 
-    options.innerHTML = "";
+    optionsContainer.innerHTML = "";
 
     q.options.forEach(option => {
 
-        const button =
+        const btn =
             document.createElement("div");
 
-        button.className = "option";
+        btn.className = "option";
 
-        button.textContent = option;
+        btn.textContent = option;
 
-        button.addEventListener("click", () => {
+        btn.onclick = () => selectOption(option);
 
-            selectOption(option);
-
-        });
-
-        options.appendChild(button);
+        optionsContainer.appendChild(btn);
 
     });
 
     updateProgress();
-
 }
 
-/* -------------------------
+/* ===================================
    SELECT ANSWER
-------------------------- */
+=================================== */
 
 function selectOption(option) {
 
-    const current =
-        questions[currentQuestion];
-
-    answers[current.key] = option;
+    answers[questions[currentQuestion].key] =
+        option;
 
     ecoScore += 25;
 
@@ -181,42 +176,27 @@ function selectOption(option) {
         showResults();
 
     }
-
 }
 
-/* -------------------------
-   PROGRESS
-------------------------- */
+/* ===================================
+   PROGRESS BAR
+=================================== */
 
 function updateProgress() {
 
     const percent =
         (currentQuestion / questions.length) * 100;
 
-    const progress =
-        document.getElementById("progress");
+    document.getElementById("progress").style.width =
+        percent + "%";
 
-    const meter =
-        document.getElementById("meterFill");
-
-    if (progress) {
-
-        progress.style.width = percent + "%";
-
-    }
-
-    if (meter) {
-
-        meter.style.width =
-            Math.min(percent + 20, 100) + "%";
-
-    }
-
+    document.getElementById("meterFill").style.width =
+        Math.min(percent + 20, 100) + "%";
 }
 
-/* -------------------------
-   RECOMMENDATIONS
-------------------------- */
+/* ===================================
+   GET RECOMMENDATIONS
+=================================== */
 
 function getRecommendations() {
 
@@ -230,20 +210,17 @@ function getRecommendations() {
 
     if (matches.length === 0) {
 
-        matches =
-            [...crops].sort(() =>
-                Math.random() - 0.5
-            );
+        matches = [...crops]
+            .sort(() => Math.random() - 0.5);
 
     }
 
     return matches.slice(0, 3);
-
 }
 
-/* -------------------------
-   RESULTS
-------------------------- */
+/* ===================================
+   SHOW RESULTS
+=================================== */
 
 function showResults() {
 
@@ -272,26 +249,28 @@ function showResults() {
             `fadeUp .8s ease ${index * 0.2}s forwards`;
 
         card.innerHTML = `
+        <img
+        src="${crop.image}"
+        alt="${crop.name}"
+        onerror="this.src='https://picsum.photos/800/600?random=' + Math.floor(Math.random()*1000)"
+        >
 
-<img src="${crop.image}" alt="${crop.name}">
+        <div class="card-content">
 
-<div class="card-content">
+        <div class="crop-name">
+        ${crop.name}
+        </div>
 
-<div class="crop-name">
-${crop.name}
-</div>
+        <div class="crop-reason">
+        ${crop.reason}
+        </div>
 
-<div class="crop-reason">
-${crop.reason}
-</div>
+        <button class="grow-btn">
+        🌱 Grow This Crop
+        </button>
 
-<button class="grow-btn">
-🌱 Grow This Crop
-</button>
-
-</div>
-
-`;
+        </div>
+        `;
 
         grid.appendChild(card);
 
@@ -305,19 +284,16 @@ ${crop.reason}
         top: 0,
         behavior: "smooth"
     });
-
 }
 
-/* -------------------------
-   GROWTH ANIMATION
-------------------------- */
+/* ===================================
+   PLANT GROWTH
+=================================== */
 
 function growPlant() {
 
     const plant =
         document.getElementById("plant");
-
-    if (!plant) return;
 
     setTimeout(() => {
 
@@ -325,20 +301,18 @@ function growPlant() {
             "translateX(-50%) scale(1)";
 
     }, 300);
-
 }
 
-/* -------------------------
+/* ===================================
    CONFETTI
-------------------------- */
+=================================== */
 
 function launchConfetti() {
 
     const colors = [
         "#8cff9f",
-        "#ffd166",
         "#06d6a0",
-        "#118ab2",
+        "#ffd166",
         "#ffffff"
     ];
 
@@ -347,15 +321,15 @@ function launchConfetti() {
         const confetti =
             document.createElement("div");
 
-        confetti.className = "confetti";
+        confetti.className =
+            "confetti";
 
         confetti.style.left =
             Math.random() * 100 + "vw";
 
         confetti.style.background =
             colors[Math.floor(
-                Math.random() * colors.length
-            )];
+                Math.random() * colors.length)];
 
         confetti.style.animationDuration =
             (Math.random() * 3 + 2) + "s";
@@ -367,14 +341,12 @@ function launchConfetti() {
             confetti.remove();
 
         }, 6000);
-
     }
-
 }
 
-/* -------------------------
-   DARK MODE
-------------------------- */
+/* ===================================
+   THEME TOGGLE
+=================================== */
 
 function toggleTheme() {
 
@@ -383,29 +355,22 @@ function toggleTheme() {
     const toggle =
         document.querySelector(".toggle");
 
-    if (toggle) {
-
-        toggle.textContent =
-            document.body.classList.contains("light")
-                ? "☀️"
-                : "🌙";
-
-    }
-
+    toggle.textContent =
+        document.body.classList.contains("light")
+            ? "☀️"
+            : "🌙";
 }
 
-/* -------------------------
+/* ===================================
    FLOATING LEAVES
-------------------------- */
+=================================== */
 
 function createLeaves() {
 
     const container =
         document.getElementById("leaves");
 
-    if (!container) return;
-
-    const leaves =
+    const icons =
         ["🍃", "🌿", "🍀"];
 
     for (let i = 0; i < 30; i++) {
@@ -413,12 +378,12 @@ function createLeaves() {
         const leaf =
             document.createElement("div");
 
-        leaf.className = "leaf";
+        leaf.className =
+            "leaf";
 
         leaf.innerHTML =
-            leaves[Math.floor(
-                Math.random() * leaves.length
-            )];
+            icons[Math.floor(
+                Math.random() * icons.length)];
 
         leaf.style.left =
             Math.random() * 100 + "vw";
@@ -433,33 +398,28 @@ function createLeaves() {
             (Math.random() * 15 + 10) + "s";
 
         container.appendChild(leaf);
-
     }
-
 }
 
-/* -------------------------
+/* ===================================
    PARALLAX
-------------------------- */
+=================================== */
 
 window.addEventListener("mousemove", (e) => {
 
     const bg =
         document.querySelector(".parallax-bg");
 
-    if (!bg) return;
-
     const x = e.clientX / 40;
     const y = e.clientY / 40;
 
     bg.style.transform =
         `translate(${-x}px,${-y}px)`;
-
 });
 
-/* -------------------------
-   INITIALIZE
-------------------------- */
+/* ===================================
+   INIT
+=================================== */
 
 window.addEventListener("DOMContentLoaded", () => {
 
