@@ -1,6 +1,6 @@
 # 🌱 Which Crop Should I Grow? Finder
 
-A hackathon-ready interactive hydroponic crop recommendation platform built for WebX × Farmspherica Innovations.
+A hackathon-ready interactive hydroponic crop recommendation platform built for The Founders' Web × Farmspherica Innovations.
 
 ## 🚀 Features
 
@@ -14,14 +14,13 @@ A hackathon-ready interactive hydroponic crop recommendation platform built for 
 
 ### Smart Recommendations
 
-* Crop matching based on:
-
+  * Crop matching based on:
   * Available Space
   * Light Conditions
   * Experience Level
   * Plant Care Availability
-* JavaScript-based recommendation engine
-* Dynamic crop filtering
+  * JavaScript-based recommendation engine
+  * Dynamic crop filtering
 
 ### Premium UI
 
@@ -96,21 +95,13 @@ Each crop contains:
 ### Current
 
 ✅ Floating Leaves
-
 ✅ Progress Bar
-
 ✅ Glass Cards
-
 ✅ Crop Growth Animation
-
 ✅ Confetti Celebration
-
 ✅ Dark Mode
-
 ✅ Parallax Background
-
 ✅ Eco Score Counter
-
 ✅ Result Cards
 
 ### Future Ideas
