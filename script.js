@@ -56,7 +56,7 @@ const crops = [
         space: ["balcony", "room"],
         light: ["medium", "lots"],
         level: ["beginner", "pro"],
-        image: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Kale-Bundle.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Kale-Bundle.jpg
         reason: "Nutrient-rich and hydroponic-friendly."
     },
     {
