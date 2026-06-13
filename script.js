@@ -48,7 +48,7 @@ const crops = [
         space: ["room"],
         light: ["lots"],
         level: ["pro"],
-        image: "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Kale-Bundle.jpg ",
         reason: "Produces abundant harvests indoors."
     },
     {
