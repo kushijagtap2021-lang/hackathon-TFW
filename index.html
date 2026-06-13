@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>🌱 Which Crop Should I Grow? </title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg,
+                    #0f2027,
+                    #203a43,
+                    #2c7744);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+            position: relative;
+            transition: .5s;
+        }
+
+        body.light {
+            background: linear-gradient(135deg,
+                    #d4fc79,
+                    #96e6a1);
+            color: #222;
+        }
+
+        /* Floating Leaves */
+
+        .leaf {
+            position: fixed;
+            font-size: 30px;
+            pointer-events: none;
+            animation: floatLeaf linear infinite;
+            opacity: .5;
+            z-index: 1;
+        }
+
+        @keyframes floatLeaf {
+
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(120vh) rotate(360deg);
+            }
+
+        }
+
+        .parallax-bg {
+            position: fixed;
+            width: 120%;
+            height: 120%;
+            background:
+                radial-gradient(circle, #8fffaa22 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -2;
+            animation: moveBg 40s linear infinite;
+        }
+
+        @keyframes moveBg {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(300px);
+            }
+        }
+
+        .header {
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        .toggle {
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            animation: fadeUp 1s;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .typing {
+            border-right: 4px solid #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation:
+                typing 4s steps(30, end) forwards,
+                blink .7s infinite;
+        }
+
+        @keyframes typing {
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: .9;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .start-btn {
+            margin-top: 35px;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            background: #8cff9f;
+            color: #0d3f20;
+            transition: .3s;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .quiz-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            display: none;
+        }
+
+        .progress-wrapper {
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            height: 18px;
+            background: #ffffff22;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg,
+                    #84fab0,
+                    #8fd3f4);
+            transition: .5s;
+        }
+
+        .eco-score {
+            text-align: right;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, .12);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, .3);
+            animation: fadeUp .8s;
+        }
+
+        .question {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .option {
+            padding: 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: center;
+            background: rgba(255, 255, 255, .15);
+            transition: .4s;
+        }
+
+        .option:hover {
+            transform:
+                translateY(-10px) scale(1.05);
+            background: #8cff9f;
+            color: #143b20;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESULT SECTION */
+
+        .results-section {
+            display: none;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 20px;
+            animation: fadeUp 1s;
+        }
+
+        .result-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .result-subtitle {
+            text-align: center;
+            opacity: .85;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* GROWTH ANIMATION */
+
+        .growth-area {
+            height: 250px;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .soil {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background: #5a3d2b;
+            border-radius: 30px;
+        }
+
+        .plant {
+            position: absolute;
+            left: 50%;
+            bottom: 50px;
+            transform: translateX(-50%) scale(0);
+            font-size: 140px;
+            transition: 2s;
+            animation: plantFloat 3s infinite ease-in-out;
+        }
+
+        @keyframes plantFloat {
+
+            0% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+        }
+
+        /* CARDS */
+
+        .results-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .crop-card {
+            background: rgba(255, 255, 255, .12);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            overflow: hidden;
+            transition: .5s;
+            position: relative;
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, .25);
+        }
+
+        .crop-card:hover {
+            transform:
+                translateY(-15px) rotate(1deg) scale(1.03);
+        }
+
+        .crop-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg,
+                    transparent,
+                    rgba(255, 255, 255, .15),
+                    transparent);
+            transform: translateX(-100%);
+            transition: 1s;
+        }
+
+        .crop-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .crop-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            transition: .6s;
+        }
+
+        .crop-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .crop-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .crop-reason {
+            opacity: .9;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .grow-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            background: #8cff9f;
+            color: #0c3f1e;
+            transition: .3s;
+        }
+
+        .grow-btn:hover {
+            transform: scale(1.08);
+        }
+
+        /* START OVER */
+
+        .restart-btn {
+            display: block;
+            margin: 60px auto;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: white;
+            color: #1f6f3d;
+            transition: .3s;
+        }
+
+        .restart-btn:hover {
+            transform: translateY(-5px);
+        }
+
+        /* CONFETTI */
+
+        .confetti {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            top: -20px;
+            z-index: 9999;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+
+            0% {
+                transform:
+                    translateY(-20px) rotate(0deg);
+            }
+
+            100% {
+                transform:
+                    translateY(120vh) rotate(720deg);
+            }
+
+        }
+
+        /* LIVE METER */
+
+        .meter-box {
+            margin: 30px 0;
+        }
+
+        .meter-label {
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .meter {
+            height: 16px;
+            background: #ffffff22;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .meter-fill {
+            height: 100%;
+            width: 0%;
+            background:
+                linear-gradient(90deg,
+                    #84fab0,
+                    #8fd3f4);
+            transition: .6s;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px) {
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .question {
+                font-size: 1.5rem;
+            }
+
+            .result-title {
+                font-size: 2rem;
+            }
+
+        }
+
+        /* DARK LIGHT ENHANCEMENTS */
+
+        body.light .glass-card {
+            background: rgba(255, 255, 255, .55);
+            color: #222;
+        }
+
+        body.light .crop-card {
+            background: rgba(255, 255, 255, .6);
+            color: #222;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="parallax-bg"></div>
+
+    <div id="leaves"></div>
+
+    <header class="header">
+        <div class="logo">🌱 "Which Crop Should I Grow?" Finder</div>
+        <div class="toggle" onclick="toggleTheme()">🌙</div>
+    </header>
+
+    <section class="hero">
+
+        <h1 class="typing">
+            Let's Start Growing 🌿
+        </h1>
+
+        <p>
+            Find the perfect hydroponic crop in seconds using our smart recommendation engine.
+        </p>
+
+        <button class="start-btn" onclick="startQuiz()">
+            Start Growing →
+        </button>
+
+    </section>
+
+    <div class="quiz-container" id="quiz">
+
+        <div class="progress-wrapper">
+
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+
+            <div class="eco-score">
+                Eco Score 🌿:
+                <span id="ecoScore">0</span>
+            </div>
+
+        </div>
+
+        <div class="meter-box">
+
+            <div class="meter-label">
+                Recommendation Accuracy
+            </div>
+
+            <div class="meter">
+                <div class="meter-fill" id="meterFill"></div>
+            </div>
+
+        </div>
+
+        <div class="glass-card">
+
+            <div class="question" id="question">
+                Question
+            </div>
+
+            <div class="options" id="options">
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RESULTS -->
+
+    <section class="results-section" id="resultsSection">
+
+        <div class="growth-area">
+
+            <div class="soil"></div>
+
+            <div class="plant" id="plant">
+                🌱
+            </div>
+
+        </div>
+
+        <h2 class="result-title">
+            Perfect Crops For You
+        </h2>
+
+        <p class="result-subtitle">
+            Based on your growing conditions
+        </p>
+
+        <div class="results-grid" id="resultsGrid">
+        </div>
+
+        <button class="restart-btn" onclick="location.reload()">
+
+            🔄 Start Over
+
+        </button>
+
+    </section>
+    <script>
+
+        /* -------------------------
+           CROP DATABASE
+        ------------------------- */
+
+        const crops = [
+
+            {
+                name: "Lettuce",
+                space: ["windowsill", "balcony"],
+                light: ["medium", "lots"],
+                level: ["beginner", "pro"],
+                image: "https://images.unsplash.com/photo-1622205313162-be1d5712a43f?w=800",
+                reason: "Fast-growing and perfect for hydroponic beginners."
+            },
+
+            {
+                name: "Spinach",
+                space: ["windowsill", "balcony"],
+                light: ["low", "medium"],
+                level: ["beginner", "pro"],
+                image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=800",
+                reason: "Thrives even with moderate lighting."
+            },
+
+            {
+                name: "Basil",
+                space: ["windowsill", "balcony"],
+                light: ["lots"],
+                level: ["beginner", "pro"],
+                image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800",
+                reason: "Aromatic herb that loves sunlight."
+            },
+
+            {
+                name: "Mint",
+                space: ["windowsill", "balcony"],
+                light: ["low", "medium"],
+                level: ["beginner", "pro"],
+                image: "https://images.unsplash.com/photo-1628557044797-f21a177c37ec?w=800",
+                reason: "Extremely easy and productive hydroponic crop."
+            },
+
+            {
+                name: "Strawberries",
+                space: ["balcony", "room"],
+                light: ["lots"],
+                level: ["pro"],
+                image: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=800",
+                reason: "High-value fruit crop for experienced growers."
+            },
+
+            {
+                name: "Cherry Tomatoes",
+                space: ["room"],
+                light: ["lots"],
+                level: ["pro"],
+                image: "https://images.unsplash.com/photo-1546470427-e5ac89cd0b83?w=800",
+                reason: "Produces abundant harvests indoors."
+            },
+
+            {
+                name: "Kale",
+                space: ["balcony", "room"],
+                light: ["medium", "lots"],
+                level: ["beginner", "pro"],
+                image: "https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?w=800",
+                reason: "Nutrient-rich and hydroponic-friendly."
+            },
+
+            {
+                name: "Cilantro",
+                space: ["windowsill", "balcony"],
+                light: ["medium"],
+                level: ["beginner"],
+                image: "https://images.unsplash.com/photo-1585325701954-dc6a0e1b0c89?w=800",
+                reason: "Compact herb ideal for small setups."
+            }
+
+        ];
+
+        /* -------------------------
+           QUESTIONS
+        ------------------------- */
+
+        const questions = [
+
+            {
+                question: "How much space do you have?",
+                key: "space",
+                options: ["windowsill", "balcony", "room"]
+            },
+
+            {
+                question: "How much light do you get?",
+                key: "light",
+                options: ["low", "medium", "lots"]
+            },
+
+            {
+                question: "What's your experience level?",
+                key: "level",
+                options: ["beginner", "pro"]
+            },
+
+            {
+                question: "How often can you care for plants?",
+                key: "care",
+                options: ["rarely", "sometimes", "daily"]
+            }
+
+        ];
+
+        let currentQuestion = 0;
+        let answers = {};
+        let ecoScore = 0;
+
+        /* -------------------------
+           START QUIZ
+        ------------------------- */
+
+        function startQuiz() {
+
+            document.querySelector(".hero").style.display = "none";
+
+            document.getElementById("quiz").style.display = "block";
+
+            showQuestion();
+
+        }
+
+        /* -------------------------
+           SHOW QUESTION
+        ------------------------- */
+
+        function showQuestion() {
+
+            const q = questions[currentQuestion];
+
+            document.getElementById("question").innerHTML =
+                q.question;
+
+            const optionsDiv =
+                document.getElementById("options");
+
+            optionsDiv.innerHTML = "";
+
+            q.options.forEach(option => {
+
+                const btn =
+                    document.createElement("div");
+
+                btn.className = "option";
+
+                btn.innerHTML = option;
+
+                btn.onclick = () => selectOption(option);
+
+                optionsDiv.appendChild(btn);
+
+            });
+
+            updateProgress();
+
+        }
+
+        /* -------------------------
+           SELECT OPTION
+        ------------------------- */
+
+        function selectOption(option) {
+
+            const q = questions[currentQuestion];
+
+            answers[q.key] = option;
+
+            ecoScore += 25;
+
+            document.getElementById("ecoScore").innerHTML =
+                ecoScore;
+
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+
+                showQuestion();
+
+            } else {
+
+                showResults();
+
+            }
+
+        }
+
+        /* -------------------------
+           PROGRESS
+        ------------------------- */
+
+        function updateProgress() {
+
+            let percent =
+                (currentQuestion / questions.length) * 100;
+
+            document.getElementById("progress").style.width =
+                percent + "%";
+
+            document.getElementById("meterFill").style.width =
+                (percent + 20) + "%";
+
+        }
+
+        /* -------------------------
+           RECOMMENDATION ENGINE
+        ------------------------- */
+
+        function getRecommendations() {
+
+            let results = crops.filter(crop =>
+
+                crop.space.includes(answers.space) &&
+
+                crop.light.includes(answers.light) &&
+
+                crop.level.includes(answers.level)
+
+            );
+
+            if (results.length < 3) {
+
+                results =
+                    [...crops].sort(() => 0.5 - Math.random());
+
+            }
+
+            return results.slice(0, 3);
+
+        }
+
+        /* -------------------------
+           RESULTS
+        ------------------------- */
+
+        function showResults() {
+
+            document.getElementById("quiz").style.display =
+                "none";
+
+            document.getElementById("resultsSection").style.display =
+                "block";
+
+            const recommendations =
+                getRecommendations();
+
+            const grid =
+                document.getElementById("resultsGrid");
+
+            recommendations.forEach(crop => {
+
+                grid.innerHTML += `
+
+<div class="crop-card">
+
+<img src="${crop.image}" alt="${crop.name}">
+
+<div class="card-content">
+
+<div class="crop-name">
+${crop.name}
+</div>
+
+<div class="crop-reason">
+${crop.reason}
+</div>
+
+<button class="grow-btn">
+Grow This Crop 🌱
+</button>
+
+</div>
+
+</div>
+
+`;
+
+            });
+
+            growPlant();
+
+            launchConfetti();
+
+        }
+
+        /* -------------------------
+           PLANT GROWTH
+        ------------------------- */
+
+        function growPlant() {
+
+            setTimeout(() => {
+
+                document.getElementById("plant")
+                    .style.transform =
+                    "translateX(-50%) scale(1)";
+
+            }, 300);
+
+        }
+
+        /* -------------------------
+           CONFETTI
+        ------------------------- */
+
+        function launchConfetti() {
+
+            const colors = [
+
+                "#8cff9f",
+                "#ffd166",
+                "#06d6a0",
+                "#118ab2",
+                "#ffffff"
+
+            ];
+
+            for (let i = 0; i < 180; i++) {
+
+                const confetti =
+                    document.createElement("div");
+
+                confetti.className = "confetti";
+
+                confetti.style.left =
+                    Math.random() * 100 + "vw";
+
+                confetti.style.background =
+                    colors[Math.floor(Math.random() * colors.length)];
+
+                confetti.style.animationDuration =
+                    (Math.random() * 3 + 2) + "s";
+
+                document.body.appendChild(confetti);
+
+                setTimeout(() => {
+
+                    confetti.remove();
+
+                }, 6000);
+
+            }
+
+        }
+
+        /* -------------------------
+           DARK MODE
+        ------------------------- */
+
+        function toggleTheme() {
+
+            document.body.classList.toggle("light");
+
+        }
+
+        /* -------------------------
+           FLOATING LEAVES
+        ------------------------- */
+
+        function createLeaves() {
+
+            const container =
+                document.getElementById("leaves");
+
+            const emojis = ["🍃", "🌿", "🍀"];
+
+            for (let i = 0; i < 30; i++) {
+
+                const leaf =
+                    document.createElement("div");
+
+                leaf.className = "leaf";
+
+                leaf.innerHTML =
+                    emojis[Math.floor(Math.random() * 3)];
+
+                leaf.style.left =
+                    Math.random() * 100 + "vw";
+
+                leaf.style.animationDuration =
+                    (Math.random() * 15 + 10) + "s";
+
+                leaf.style.fontSize =
+                    (Math.random() * 25 + 15) + "px";
+
+                leaf.style.opacity =
+                    Math.random();
+
+                container.appendChild(leaf);
+
+            }
+
+        }
+
+        createLeaves();
+
+        /* -------------------------
+           PARALLAX EFFECT
+        ------------------------- */
+
+        window.addEventListener("mousemove", (e) => {
+
+            const bg =
+                document.querySelector(".parallax-bg");
+
+            const x =
+                e.clientX / 40;
+
+            const y =
+                e.clientY / 40;
+
+            bg.style.transform =
+                `translate(${-x}px,${-y}px)`;
+
+        });
+
+        /* -------------------------
+           EXTRA WOW EFFECT
+        ------------------------- */
+
+        setInterval(() => {
+
+            document.querySelectorAll(".crop-card")
+                .forEach(card => {
+
+                    card.style.animation =
+                        "fadeUp 1s";
+
+                });
+
+        }, 4000);
+
+    </script>
+
+</body>
+
+</html>
