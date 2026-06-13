@@ -1,74 +1,71 @@
-/* -------------------------
-   CROP DATABASE
-------------------------- */
+const crops =
+    [
+        {
+            name: "Lettuce",
+            space: ["windowsill", "balcony"],
+            light: ["medium", "lots"],
+            level: ["beginner", "pro"],
+            image: "https://images.unsplash.com/photo-1622205313162-be1d5712a43f?auto=format&fit=crop&w=1200&q=80",
+            reason: "Fast-growing and perfect for hydroponic beginners."
+        },
+        {
+            name: "Spinach",
+            space: ["windowsill", "balcony"],
+            light: ["low", "medium"],
+            level: ["beginner", "pro"],
+            image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=1200&q=80",
+            reason: "Thrives even with moderate lighting."
+        },
+        {
+            name: "Basil",
+            space: ["windowsill", "balcony"],
+            light: ["lots"],
+            level: ["beginner", "pro"],
+            image: "https://images.unsplash.com/photo-1618375569909-3c8616cf7733?auto=format&fit=crop&w=1200&q=80",
+            reason: "Aromatic herb that loves sunlight."
+        },
+        {
+            name: "Mint",
+            space: ["windowsill", "balcony"],
+            light: ["low", "medium"],
+            level: ["beginner", "pro"],
+            image: "https://images.unsplash.com/photo-1628557044797-f21a177c37ec?auto=format&fit=crop&w=1200&q=80",
+            reason: "Extremely easy and productive hydroponic crop."
+        },
+        {
+            name: "Strawberries",
+            space: ["balcony", "room"],
+            light: ["lots"],
+            level: ["pro"],
+            image: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=1200&q=80",
+            reason: "High-value fruit crop for experienced growers."
+        },
+        {
+            name: "Cherry Tomatoes",
+            space: ["room"],
+            light: ["lots"],
+            level: ["pro"],
+            image: "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg",
+            reason: "Produces abundant harvests indoors."
+        },
 
-const crops = [
-    {
-        name: "Lettuce",
-        space: ["windowsill", "balcony"],
-        light: ["medium", "lots"],
-        level: ["beginner", "pro"],
-        image: "https://images.unsplash.com/photo-1622205313162-be1d5712a43f?auto=format&fit=crop&w=1200&q=80",
-        reason: "Fast-growing and perfect for hydroponic beginners."
-    },
-    {
-        name: "Spinach",
-        space: ["windowsill", "balcony"],
-        light: ["low", "medium"],
-        level: ["beginner", "pro"],
-        image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=1200&q=80",
-        reason: "Thrives even with moderate lighting."
-    },
-    {
-        name: "Basil",
-        space: ["windowsill", "balcony"],
-        light: ["lots"],
-        level: ["beginner", "pro"],
-        image: "https://images.unsplash.com/photo-1618375569909-3c8616cf7733?auto=format&fit=crop&w=1200&q=80",
-        reason: "Aromatic herb that loves sunlight."
-    },
-    {
-        name: "Mint",
-        space: ["windowsill", "balcony"],
-        light: ["low", "medium"],
-        level: ["beginner", "pro"],
-        image: "https://images.unsplash.com/photo-1628557044797-f21a177c37ec?auto=format&fit=crop&w=1200&q=80",
-        reason: "Extremely easy and productive hydroponic crop."
-    },
-    {
-        name: "Strawberries",
-        space: ["balcony", "room"],
-        light: ["lots"],
-        level: ["pro"],
-        image: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=1200&q=80",
-        reason: "High-value fruit crop for experienced growers."
-    },
-    {
-        name: "Cherry Tomatoes",
-        space: ["room"],
-        light: ["lots"],
-        level: ["pro"],
-        image: "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg",
-        reason: "Produces abundant harvests indoors."
-    },
-
-    {
-        name: "Kale",
-        space: ["balcony", "room"],
-        light: ["medium", "lots"],
-        level: ["beginner", "pro"],
-        image: "https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg",
-        reason: "Nutrient-rich and hydroponic-friendly."
-    },
-    {
-        name: "Cilantro",
-        space: ["windowsill", "balcony"],
-        light: ["medium"],
-        level: ["beginner"],
-        image: "https://images.unsplash.com/photo-1625944525533-473f1b3d54e7?auto=format&fit=crop&w=1200&q=80",
-        reason: "Compact herb ideal for small setups."
-    }
-];
+        {
+            name: "Kale",
+            space: ["balcony", "room"],
+            light: ["medium", "lots"],
+            level: ["beginner", "pro"],
+            image: "https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg",
+            reason: "Nutrient-rich and hydroponic-friendly."
+        },
+        {
+            name: "Cilantro",
+            space: ["windowsill", "balcony"],
+            light: ["medium"],
+            level: ["beginner"],
+            image: "https://images.unsplash.com/photo-1625944525533-473f1b3d54e7?auto=format&fit=crop&w=1200&q=80",
+            reason: "Compact herb ideal for small setups."
+        }
+    ];
 
 /* -------------------------
    QUESTIONS
